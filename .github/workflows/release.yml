@@ -19,7 +19,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Tests
-        run: npm run ci:test
+        run: npm run ci:test -- --coverage
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.13
+        with:
+          name: Coverage report
+          token: ${{ secrets.CODE_COVERAGE_TOKEN }}
+          directory: coverage/
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
