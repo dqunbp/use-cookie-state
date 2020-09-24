@@ -2,8 +2,9 @@
 
 Simple React persistent state management hook, based on browser cookies
 
-[![NPM](https://img.shields.io/npm/v/use-cookie-state.svg)](https://www.npmjs.com/package/use-cookie-state) 
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+![npm](https://img.shields.io/npm/v/use-cookie-state)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dqunbp/use-cookie-state/Release)
+![Codecov](https://img.shields.io/codecov/c/github/dqunbp/use-cookie-state)
 
 ## Features
 
