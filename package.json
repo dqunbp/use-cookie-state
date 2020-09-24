@@ -1,0 +1,59 @@
+{
+  "name": "use-cookie-state",
+  "version": "0.0.0-development",
+  "description": "State management React hook using browser cookies as persistent storage",
+  "author": "dqunbp",
+  "license": "MIT",
+  "repository": "dqunbp/use-cookie-state",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "jest --watchAll --no-cache",
+    "prepare": "npm run build",
+    "deploy": "gh-pages -d example/build",
+    "semantic-release": "semantic-release"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "hook",
+    "state",
+    "react",
+    "cookie",
+    "react hook",
+    "react hooks",
+    "use-cookie-state"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.x",
+    "cookie": "^0.4.x"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^3.4.1",
+    "@types/cookie": "^0.4.0",
+    "@types/jest": "^26.0.14",
+    "@types/react": "^16.9.49",
+    "cookie": "^0.4.1",
+    "gh-pages": "^3.1.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "rollup": "^2.26.11",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "semantic-release": "^17.1.2",
+    "standard-version": "^9.0.0",
+    "ts-jest": "^26.4.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {}
+}
