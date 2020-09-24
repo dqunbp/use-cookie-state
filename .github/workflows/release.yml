@@ -19,8 +19,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Tests
-        env: 
-          CI: true
         run: npm t
       - name: Release
         env:
