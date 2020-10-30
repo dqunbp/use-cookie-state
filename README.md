@@ -43,7 +43,7 @@ export default MyComponent
 #### 🔗 useCookieState
 
 - **key** - used as cookie name
-- **value** - value to persist
+- **value** - initial value
 - **options** *(optional)*
   - **decodeOps** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
   - **encodeOps** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
