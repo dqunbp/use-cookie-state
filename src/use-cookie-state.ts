@@ -30,13 +30,16 @@ export function useCookieState<T = string>(
   options?: Options
 ): [T, (value: T) => void] {
   const getInitialValue = (): T => {
-    if (typeof window === "undefined") return initialValue;
+    const defaultValue =
+      typeof initialValue === "function" ? initialValue() : initialValue;
+
+    if (typeof window === "undefined") return defaultValue;
 
     return getCookieValue({
       key,
       cookies: document.cookie,
       options: options?.decodeOps,
-      defaultValue: initialValue,
+      defaultValue,
     }) as T;
   };
 

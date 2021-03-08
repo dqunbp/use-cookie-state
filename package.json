@@ -33,8 +33,8 @@
     "use-cookie-state"
   ],
   "peerDependencies": {
-    "react": "^16.8.x",
-    "cookie": "^0.4.x"
+    "cookie": "^0.4.x",
+    "react": "^16.8.x | ^17.x.x"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.4.1",
@@ -55,6 +55,5 @@
     "standard-version": "^9.0.0",
     "ts-jest": "^26.4.0",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {}
+  }
 }

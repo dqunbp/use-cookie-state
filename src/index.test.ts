@@ -8,6 +8,12 @@ it("should use initial value", () => {
   expect(result.current[0]).toBe("myvalue");
 });
 
+it("should get initial value from function", () => {
+  const { result } = renderHook(() => useCookieState("mykey", () => "myvalue"));
+
+  expect(result.current[0]).toBe("myvalue");
+});
+
 it("should use initial value from cookie", () => {
   document.cookie = cookie.serialize("mykey", "myCookieValue");
   const { result } = renderHook(() => useCookieState("mykey", "myvalue"));
