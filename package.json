@@ -34,7 +34,7 @@
   ],
   "peerDependencies": {
     "cookie": "^0.4.x",
-    "react": "^16.8.x | ^17.x.x"
+    "react": "^16.8.x || ^17.x.x"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.4.1",
