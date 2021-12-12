@@ -8,9 +8,9 @@ Simple React persistent state management hook, based on browser cookies
 
 ## Features
 
-- Persist your state with brpwser cookies
+- Persist your state with browser cookies
 - Based on [cookie](https://www.npmjs.com/package/cookie) package
-- Supports parse/serizlize options
+- Supports parse/serialize options
 - Supports Server Side Rendering - behaves like a `useState` if browser cookies is inaccessible
 
 
@@ -25,14 +25,42 @@ Simple React persistent state management hook, based on browser cookies
     $ yarn add use-cookie-state cookie
 
 
-## 📖 Example
+## 📖 Examples
+
+`useCookieState` behaves like `React.useState` hook, just put the cookie key as the first argument and the value or function or object or anything else as the second arg.
+The state will be persistent between rerenders and page reloads.
+Don't worry about serializing or parsing the state value it just works our of the box!
+
+### With simple object and default options
 
 ```jsx
 import React from "react";
 import { useCookieState } from "use-cookie-state";
 
 function MyComponent() {
-  const [state, setState] = useCookieState("mykey", "foo-bar")
+  const [state, setState] = useCookieState("mykey", { foo: "bar" })
+}
+
+export default MyComponent
+```
+
+### With custom options and function as initial arg
+
+```jsx
+import React from "react";
+import { useCookieState } from "use-cookie-state";
+
+const getCookiesInitialValue = () => {
+  return "my initial value"
+}
+
+function MyComponent() {
+  const [state, setState] = useCookieState("mykey", getCookiesInitialValue, {
+    encodeOps: {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    }
+  })
 }
 
 export default MyComponent
@@ -43,10 +71,12 @@ export default MyComponent
 #### 🔗 useCookieState
 
 - **key** - used as cookie name
-- **value** - initial value
+- **value** - initial value, any value or object or function with returns initial hook value
 - **options** *(optional)*
   - **decodeOps** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
   - **encodeOps** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
+
+**Default encodeOps**: `{ path: "/", expires: new Date("10000") }`
 
 ```ts
 useCookieState(
@@ -54,7 +84,7 @@ useCookieState(
   value: any; 
   options?: {
     decodeOps?: cookie.CookieParseOptions, 
-    encodeOps?: cookie.CookieSerializeOptions
+    encodeOps?: cookie.CookieSerializeOptions // { path: "/", expires: new Date("10000") } by default
   };
 )
 ```

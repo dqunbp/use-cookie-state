@@ -27,7 +27,7 @@ type Options = {
 export function useCookieState<T = string>(
   key: string,
   initialValue: T,
-  options?: Options
+  options: Options = { encodeOps: { path: "/", expires: new Date("10000") } }
 ): [T, (value: T) => void] {
   const getInitialValue = (): T => {
     const defaultValue =

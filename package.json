@@ -14,7 +14,8 @@
     "ci:test": "CI=true jest --no-cache",
     "prepare": "npm run build",
     "deploy": "gh-pages -d example/build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "cz": "cz"
   },
   "jest": {
     "preset": "ts-jest",
@@ -34,26 +35,32 @@
   ],
   "peerDependencies": {
     "cookie": "^0.4.x",
-    "react": "^16.8.x || ^17.x.x"
+    "react": "^16.8.x || ^17.x.x || ^18.x.x"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^3.4.1",
-    "@types/cookie": "^0.4.0",
-    "@types/jest": "^26.0.14",
-    "@types/react": "^16.9.49",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/cookie": "^0.4.1",
+    "@types/jest": "^27.0.3",
+    "@types/react": "^17.0.37",
     "cookie": "^0.4.1",
-    "gh-pages": "^3.1.0",
-    "jest": "^26.4.2",
-    "prettier": "^2.1.1",
-    "react": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
-    "rollup": "^2.26.11",
-    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "gh-pages": "^3.2.3",
+    "jest": "^27.4.4",
+    "prettier": "^2.5.1",
+    "react": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "rollup": "^2.61.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.27.2",
-    "semantic-release": "^17.1.2",
-    "standard-version": "^9.0.0",
-    "ts-jest": "^26.4.0",
-    "typescript": "^4.0.2"
+    "rollup-plugin-typescript2": "^0.31.1",
+    "semantic-release": "^18.0.1",
+    "standard-version": "^9.3.2",
+    "ts-jest": "^27.1.1",
+    "typescript": "^4.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
