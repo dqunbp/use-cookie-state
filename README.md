@@ -6,6 +6,8 @@ Simple React persistent state management hook, based on browser cookies
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dqunbp/use-cookie-state/Release)](https://github.com/dqunbp/use-cookie-state/actions?query=workflow%3ARelease)
 [![Codecov](https://img.shields.io/codecov/c/github/dqunbp/use-cookie-state)](https://codecov.io/gh/dqunbp/use-cookie-state)
 
+[Dev.to article on writing this library](https://dev.to/dqunbp/store-state-in-cookies-with-use-cookie-value-react-hook-4i4f)
+
 ## Features
 
 - Persist your state with browser cookies
