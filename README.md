@@ -41,6 +41,8 @@ import { useCookieState } from "use-cookie-state";
 
 function MyComponent() {
   const [state, setState] = useCookieState("mykey", { foo: "bar" })
+
+  return <div>Current state: {state}</div>
 }
 
 export default MyComponent
@@ -63,6 +65,20 @@ function MyComponent() {
       maxAge: 60 * 60 * 24 * 7 // 1 week
     }
   })
+
+  const handleUpdate = () => {
+    setState(
+      "next cookie value", 
+      { encodeOps: { domain: "example.com"} } // update value fn also accepts custom encode options
+    )
+  }
+
+  return (
+    <div>
+      <div>Current state: {state}</div>
+      <button onClick={handleUpdate}>Update current state</button>
+    </div>
+  )
 }
 
 export default MyComponent
@@ -71,6 +87,8 @@ export default MyComponent
 ## 🕹 API
 
 #### 🔗 useCookieState
+
+##### Options
 
 - **key** - used as cookie name
 - **value** - initial value, any value or object or function with returns initial hook value
@@ -89,6 +107,18 @@ useCookieState(
     encodeOps?: cookie.CookieSerializeOptions // { path: "/", expires: new Date("10000") } by default
   };
 )
+```
+
+##### Returns
+
+- **value** - current cookie value
+- **setValue** - callback to update cookie value
+
+```ts
+[
+  value: T,
+  setValue(value: T, encodeOps? cookie.CookieSerializeOptions)
+]
 ```
 
 ---

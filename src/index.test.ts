@@ -3,7 +3,8 @@ import cookie from "cookie";
 import { useCookieState } from "./use-cookie-state";
 
 beforeEach(() => {
-  document.cookie = cookie.serialize("any", "");
+  for (const key in cookie.parse(document.cookie))
+    document.cookie = cookie.serialize(key, "", { expires: new Date(0) });
 });
 
 it("should use initial value", () => {
@@ -42,7 +43,7 @@ it("should update value", async () => {
 });
 
 it("should use custom decodeOps", async () => {
-  console.log(document.cookie);
+  document.cookie = cookie.serialize("mykey", "initialCookieValue");
 
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
@@ -85,4 +86,29 @@ it("should use custom encodeOps 2", async () => {
   const cookieValue = cookie.parse(document.cookie);
 
   expect(cookieValue["mykey"]).toBe(undefined);
+});
+
+it("should accept custom encodeOps with `setCookieValue`", () => {
+  const { result } = renderHook(() =>
+    useCookieState("mykey", "myCookieValue", {
+      encodeOps: { domain: "test.com" },
+    })
+  );
+
+  let cookieValue = cookie.parse(document.cookie);
+  expect(cookieValue["mykey"]).toBe(undefined);
+
+  act(() => {
+    result.current[1]("updatedCookieValue");
+  });
+
+  cookieValue = cookie.parse(document.cookie);
+  expect(cookieValue["mykey"]).toBe(undefined);
+
+  act(() => {
+    result.current[1]("updatedCookieValue", { domain: "localhost" });
+  });
+
+  cookieValue = cookie.parse(document.cookie);
+  expect(cookieValue["mykey"]).toBe("updatedCookieValue");
 });
