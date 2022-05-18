@@ -29,7 +29,7 @@ const defaultEncodeOps: EncodeOps = { path: "/", expires: new Date("10000") };
 export function useCookieState<T = string>(
   key: string,
   initialValue: T,
-  options: Options = { encodeOps: defaultEncodeOps }
+  options?: Options
 ): [T, (value: T, encodeOps?: EncodeOps) => void] {
   const getInitialValue = (): T => {
     const defaultValue =
@@ -54,7 +54,7 @@ export function useCookieState<T = string>(
     document.cookie = cookie.serialize(
       key,
       stringified,
-      encodeOps ?? options?.encodeOps
+      Object.assign({}, defaultEncodeOps, options?.encodeOps, encodeOps)
     );
 
     setValue(value);

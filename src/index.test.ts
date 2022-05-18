@@ -110,5 +110,6 @@ it("should accept custom encodeOps with `setCookieValue`", () => {
   });
 
   cookieValue = cookie.parse(document.cookie);
+
   expect(cookieValue["mykey"]).toBe("updatedCookieValue");
 });

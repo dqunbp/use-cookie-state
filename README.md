@@ -26,6 +26,49 @@ Simple React persistent state management hook, based on browser cookies
 
     $ yarn add use-cookie-state cookie
 
+## 🕹 API
+
+#### 🔗 useCookieState
+
+##### Options
+
+- **key** - used as cookie name
+- **value** - initial value, any value or object or function with returns initial hook value
+- **options** *(optional)*
+  - **decodeOps** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
+  - **encodeOps** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
+
+###### Default encode options
+
+If no encode options are passed, the default encode options will be used.
+
+`{ path: "/", expires: new Date("10000") }`
+
+Otherwise, the passed encode options will be merged with the default encode options.
+
+```ts
+useCookieState(
+  key: string;
+  value: any; 
+  options?: {
+    decodeOps?: cookie.CookieParseOptions, 
+    encodeOps?: cookie.CookieSerializeOptions // = { path: "/", expires: new Date("10000") }
+  };
+)
+```
+
+##### Returns
+
+- **value** - current cookie value
+- **setValue** - callback to update cookie value
+
+```ts
+[
+  value: T,
+  setValue(value: T, encodeOps? cookie.CookieSerializeOptions)
+]
+```
+
 
 ## 📖 Examples
 
@@ -82,43 +125,6 @@ function MyComponent() {
 }
 
 export default MyComponent
-```
-
-## 🕹 API
-
-#### 🔗 useCookieState
-
-##### Options
-
-- **key** - used as cookie name
-- **value** - initial value, any value or object or function with returns initial hook value
-- **options** *(optional)*
-  - **decodeOps** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
-  - **encodeOps** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
-
-**Default encodeOps**: `{ path: "/", expires: new Date("10000") }`
-
-```ts
-useCookieState(
-  key: string;
-  value: any; 
-  options?: {
-    decodeOps?: cookie.CookieParseOptions, 
-    encodeOps?: cookie.CookieSerializeOptions // { path: "/", expires: new Date("10000") } by default
-  };
-)
-```
-
-##### Returns
-
-- **value** - current cookie value
-- **setValue** - callback to update cookie value
-
-```ts
-[
-  value: T,
-  setValue(value: T, encodeOps? cookie.CookieSerializeOptions)
-]
 ```
 
 ---
