@@ -38,6 +38,8 @@
     "react": "^16.8.x || ^17.x.x || ^18.x.x"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/cookie": "^0.4.1",
     "@types/jest": "^27.0.3",
