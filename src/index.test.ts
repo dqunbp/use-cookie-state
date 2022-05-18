@@ -42,22 +42,22 @@ it("should update value", async () => {
   expect(cookieValue["mykey"]).toBe("updatedCookieValue");
 });
 
-it("should use custom decodeOps", async () => {
+it("should use custom decode", async () => {
   document.cookie = cookie.serialize("mykey", "initialCookieValue");
 
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
-      decodeOps: { decode: () => "decoded" },
+      decode: { decode: () => "decoded" },
     })
   );
 
   expect(result.current[0]).toBe("decoded");
 });
 
-it("should use custom encodeOps 1", async () => {
+it("should use custom encode 1", async () => {
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
-      encodeOps: { encode: () => "encoded" },
+      encode: { encode: () => "encoded" },
     })
   );
 
@@ -72,10 +72,10 @@ it("should use custom encodeOps 1", async () => {
   expect(cookieValue["mykey"]).toBe("encoded");
 });
 
-it("should use custom encodeOps 2", async () => {
+it("should use custom encode 2", async () => {
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
-      encodeOps: { expires: new Date(0) },
+      encode: { expires: new Date(0) },
     })
   );
 
@@ -88,10 +88,10 @@ it("should use custom encodeOps 2", async () => {
   expect(cookieValue["mykey"]).toBe(undefined);
 });
 
-it("should accept custom encodeOps with `setCookieValue`", () => {
+it("should accept custom encode with `setCookieValue`", () => {
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
-      encodeOps: { domain: "test.com" },
+      encode: { domain: "test.com" },
     })
   );
 

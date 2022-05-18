@@ -35,8 +35,8 @@ Simple React persistent state management hook, based on browser cookies
 - **key** - used as cookie name
 - **value** - initial value, any value or object or function with returns initial hook value
 - **options** *(optional)*
-  - **decodeOps** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
-  - **encodeOps** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
+  - **decode** *(optional)* - cookie parse [options](https://www.npmjs.com/package/cookie#options)
+  - **encode** *(optional)* - cookie serialize [options](https://www.npmjs.com/package/cookie#options-1)
 
 ###### Default encode options
 
@@ -51,8 +51,8 @@ useCookieState(
   key: string;
   value: any; 
   options?: {
-    decodeOps?: cookie.CookieParseOptions, 
-    encodeOps?: cookie.CookieSerializeOptions // = { path: "/", expires: new Date("10000") }
+    decode?: cookie.CookieParseOptions, 
+    encode?: cookie.CookieSerializeOptions // = { path: "/", expires: new Date("10000") }
   };
 )
 ```
@@ -65,7 +65,7 @@ useCookieState(
 ```ts
 [
   value: T,
-  setValue(value: T, encodeOps? cookie.CookieSerializeOptions)
+  setValue(value: T, encode? cookie.CookieSerializeOptions)
 ]
 ```
 
@@ -103,7 +103,7 @@ const getCookiesInitialValue = () => {
 
 function MyComponent() {
   const [state, setState] = useCookieState("mykey", getCookiesInitialValue, {
-    encodeOps: {
+    encode: {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 7 // 1 week
     }
@@ -112,7 +112,7 @@ function MyComponent() {
   const handleUpdate = () => {
     setState(
       "next cookie value", 
-      { encodeOps: { domain: "example.com"} } // update value fn also accepts custom encode options
+      { encode: { domain: "example.com"} } // update value fn also accepts custom encode options
     )
   }
 

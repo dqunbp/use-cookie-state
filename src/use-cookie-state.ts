@@ -1,15 +1,15 @@
 import cookie from "cookie";
 import { useState } from "react";
 
-export type EncodeOps = cookie.CookieSerializeOptions;
-export type DecodeOps = cookie.CookieParseOptions;
+export type Encode = cookie.CookieSerializeOptions;
+export type Decode = cookie.CookieParseOptions;
 
-type Options = { decodeOps?: DecodeOps; encodeOps?: EncodeOps };
+type Options = { decode?: Decode; encode?: Encode };
 
 type GetCookieValue<T> = {
   key: string;
   cookies: string;
-  options: DecodeOps | undefined;
+  options: Decode | undefined;
   defaultValue: T;
 };
 
@@ -24,13 +24,13 @@ function getCookieValue<T>({
   return value[key] ?? defaultValue;
 }
 
-const defaultEncodeOps: EncodeOps = { path: "/", expires: new Date("10000") };
+const defaultEncode: Encode = { path: "/", expires: new Date("10000") };
 
 export function useCookieState<T = string>(
   key: string,
   initialValue: T,
   options?: Options
-): [T, (value: T, encodeOps?: EncodeOps) => void] {
+): [T, (value: T, encode?: Encode) => void] {
   const getInitialValue = (): T => {
     const defaultValue =
       typeof initialValue === "function" ? initialValue() : initialValue;
@@ -40,21 +40,21 @@ export function useCookieState<T = string>(
     return getCookieValue({
       key,
       cookies: document.cookie,
-      options: options?.decodeOps,
+      options: options?.decode,
       defaultValue,
     }) as T;
   };
 
   const [value, setValue] = useState<T>(getInitialValue);
 
-  const setNextValue = (value: T, encodeOps?: EncodeOps) => {
+  const setNextValue = (value: T, encode?: Encode) => {
     const stringified =
       typeof value === "string" ? value : JSON.stringify(value);
 
     document.cookie = cookie.serialize(
       key,
       stringified,
-      Object.assign({}, defaultEncodeOps, options?.encodeOps, encodeOps)
+      Object.assign({}, defaultEncode, options?.encode, encode)
     );
 
     setValue(value);
