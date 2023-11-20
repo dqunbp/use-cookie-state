@@ -24,7 +24,7 @@ function getCookieValue<T>({
   return value[key] ?? defaultValue;
 }
 
-const defaultEncode: Encode = { path: "/", expires: new Date("10000") };
+const defaultEncode: Encode = { path: "/", expires: new Date("9999") };
 
 export function useCookieState<T = string>(
   key: string,
