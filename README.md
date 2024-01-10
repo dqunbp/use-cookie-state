@@ -44,7 +44,7 @@ Simple React persistent state management hook, based on browser cookies
 
 If no encode options are passed, the default encode options will be used.
 
-`{ path: "/", expires: new Date("10000") }`
+`{ path: "/", expires: new Date("9999") }`
 
 Otherwise, the passed encode options will be merged with the default encode options.
 
@@ -54,7 +54,7 @@ useCookieState(
   value: any; 
   options?: {
     decode?: cookie.CookieParseOptions, 
-    encode?: cookie.CookieSerializeOptions // = { path: "/", expires: new Date("10000") }
+    encode?: cookie.CookieSerializeOptions // = { path: "/", expires: new Date("9999") }
   };
 )
 ```
@@ -76,7 +76,7 @@ useCookieState(
 
 `useCookieState` behaves like `React.useState` hook, just put the cookie key as the first argument and the value or function or object or anything else as the second arg.
 The state will be persistent between rerenders and page reloads.
-Don't worry about serializing or parsing the state value it just works our of the box!
+Don't worry about serializing or parsing the state value it just works out of the box!
 
 ### With simple object and default options
 
