@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/dqunbp/use-cookie-state/compare/v2.0.0...v2.0.1) (2024-01-10)
+
+
+### Bug Fixes
+
+* update default expires value ([67cbd5f](https://github.com/dqunbp/use-cookie-state/commit/67cbd5f72772e8b23d0e9c6f02fd9cc14a457385))
+
 # [2.0.0](https://github.com/dqunbp/use-cookie-state/compare/v1.4.0...v2.0.0) (2022-05-18)
 
 
