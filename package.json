@@ -34,7 +34,7 @@
     "use-cookie-state"
   ],
   "peerDependencies": {
-    "cookie": "^0.4.x ||  ^0.5.x",
+    "cookie": "^0.4.x ||  ^0.5.x ||  ^0.6.x",
     "react": "^16.8.x || ^17.x.x || ^18.x.x"
   },
   "devDependencies": {
