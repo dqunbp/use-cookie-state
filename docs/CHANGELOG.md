@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/dqunbp/use-cookie-state/compare/v2.1.0...v2.1.1) (2024-12-08)
+
+
+### Bug Fixes
+
+* **deps:** update the deps ([d7d2383](https://github.com/dqunbp/use-cookie-state/commit/d7d23834a8b58fa3ad998eb04b2a039860b4252d))
+
 # [2.1.0](https://github.com/dqunbp/use-cookie-state/compare/v2.0.1...v2.1.0) (2024-04-18)
 
 
