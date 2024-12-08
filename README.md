@@ -68,6 +68,8 @@ useCookieState<T = string>(
   - **decode**: A function to decode the cookie value when reading it from `document.cookie`.
   - **encode**: An object specifying default cookie attributes used when writing the cookie.
 
+**!IMPORTANT!**: Due the `cookie` package implementation, the `decode` function will be applied for each cookie value, during the cookies parsing process. Be patient to use try/catch block to avoid errors.
+
 **Return Value:**
 - An array `[value, setValue]` similar to `useState`:
   - **value**: The current state derived from the cookie.
@@ -160,6 +162,8 @@ function MyComponent() {
 
 export default MyComponent;
 ```
+
+**!IMPORTANT!**: Due the `cookie` package implementation, the `decode` function will be applied for each cookie value, during the cookies parsing process. Be patient to use try/catch block to avoid errors.
 
 ### Custom Cookie Settings
 

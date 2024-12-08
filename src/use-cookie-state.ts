@@ -19,14 +19,12 @@ function getCookieValue<T>({
   decode,
   defaultValue,
 }: GetCookieValue<T>): string | T {
-  const allCookies = cookie.parse(cookies || "");
-  const value = allCookies[key];
+  const values = cookie.parse(cookies || "", { decode });
+  const value = values[key];
 
   if (typeof value === "undefined") return defaultValue;
 
-  if (typeof decode !== "undefined") return decode(value);
-
-  return value;
+  return values[key] ?? defaultValue;
 }
 
 const defaultEncode: Encode = { path: "/", expires: new Date("9999") };
