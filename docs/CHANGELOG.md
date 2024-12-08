@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/dqunbp/use-cookie-state/compare/v3.0.0...v3.1.0) (2024-12-08)
+
+
+### Features
+
+* improve cookie parsing logic to handle decode function with cookie lib ([a42c05c](https://github.com/dqunbp/use-cookie-state/commit/a42c05c29946b6f17dd093ab62874ea86500a161))
+
 # [3.0.0](https://github.com/dqunbp/use-cookie-state/compare/v2.1.1...v3.0.0) (2024-12-08)
 
 
