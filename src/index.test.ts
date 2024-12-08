@@ -1,5 +1,6 @@
-import { act, renderHook } from "@testing-library/react-hooks";
-import cookie from "cookie";
+import { act, renderHook } from "@testing-library/react";
+
+import * as cookie from "cookie";
 import { useCookieState } from "./use-cookie-state";
 
 beforeEach(() => {
@@ -47,7 +48,7 @@ it("should use custom decode", async () => {
 
   const { result } = renderHook(() =>
     useCookieState("mykey", "myCookieValue", {
-      decode: { decode: () => "decoded" },
+      decode: () => "decoded",
     })
   );
 

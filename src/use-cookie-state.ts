@@ -1,27 +1,32 @@
-import cookie from "cookie";
+import * as cookie from "cookie";
 import { useState } from "react";
 
-export type Encode = cookie.CookieSerializeOptions;
-export type Decode = cookie.CookieParseOptions;
+export type Encode = cookie.SerializeOptions;
+export type Decode = (value: string) => any;
 
 type Options = { decode?: Decode; encode?: Encode };
 
 type GetCookieValue<T> = {
   key: string;
   cookies: string;
-  options: Decode | undefined;
+  decode: Decode | undefined;
   defaultValue: T;
 };
 
 function getCookieValue<T>({
   key,
   cookies,
-  options,
+  decode,
   defaultValue,
 }: GetCookieValue<T>): string | T {
-  const value = cookie.parse(cookies || "", options);
+  const allCookies = cookie.parse(cookies || "");
+  const value = allCookies[key];
 
-  return value[key] ?? defaultValue;
+  if (typeof value === "undefined") return defaultValue;
+
+  if (typeof decode !== "undefined") return decode(value);
+
+  return value;
 }
 
 const defaultEncode: Encode = { path: "/", expires: new Date("9999") };
@@ -40,7 +45,7 @@ export function useCookieState<T = string>(
     return getCookieValue({
       key,
       cookies: document.cookie,
-      options: options?.decode,
+      decode: options?.decode,
       defaultValue,
     }) as T;
   };
