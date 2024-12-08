@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/dqunbp/use-cookie-state/compare/v2.1.1...v3.0.0) (2024-12-08)
+
+
+### Features
+
+* update decode option handling to accept a decoding function directly ([853650f](https://github.com/dqunbp/use-cookie-state/commit/853650fb8de362b7f5d1e4786d2f17c70516aab1)), closes [#3](https://github.com/dqunbp/use-cookie-state/issues/3)
+
+
+### BREAKING CHANGES
+
+* the cookie package version bumbed up from 0.7.2 to 1.0.2
+
 ## [2.1.1](https://github.com/dqunbp/use-cookie-state/compare/v2.1.0...v2.1.1) (2024-12-08)
 
 
